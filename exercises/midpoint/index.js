@@ -12,6 +12,13 @@
 //   l.insertLast('c')
 //   midpoint(l); // returns { data: 'b' }
 
-function midpoint(list) {}
+function midpoint(list) {
+    let half = list.getFirst(), full = list.getFirst();
+    while(full.next && full.next.next) {
+        half = half.next;
+        full = full.next.next;
+    }
+    return half;
+}
 
 module.exports = midpoint;
