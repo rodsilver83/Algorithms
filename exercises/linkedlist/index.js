@@ -81,6 +81,57 @@ class LinkedList {
         }
         return pointer;
     }
+    
+    removeAt(i) {
+        if(this.head) {
+            let j = 0, pointer = this.head, before = null;
+            while(pointer != null && j < i) {
+                j++;
+                before = pointer;
+                pointer = pointer.next;
+            }
+            if(before) {
+                if(pointer) {
+                    before.next = pointer.next;
+                } else {
+                    this.head = null;
+                }
+            } else {
+                this.head = pointer.next;
+            }
+        }
+    }
+    
+    insertAt(data, i) {
+        let j = 0, pointer = this.head, 
+        before = null;
+        while(pointer != null && j < i) {
+            j++;
+            before = pointer;
+            pointer = pointer.next;
+        }
+        if(before) {
+            before.next = new Node(data, pointer);
+        } else {
+            this.head = new Node(data, pointer);
+        }
+    }
+    
+    forEach(fn) {
+        let pointer = this.head;
+        while(pointer != null) {
+            fn(pointer);
+            pointer = pointer.next;
+        }
+    }
+    
+    *[Symbol.iterator]() {
+        let node = this.head;
+        while(node) {
+            yield node;
+            node = node.next;
+        }
+    }
 }
 
 module.exports = { Node, LinkedList };
