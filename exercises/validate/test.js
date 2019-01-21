@@ -17,6 +17,9 @@ test('Validate recognizes an invalid BST', () => {
   n.insert(15);
   n.insert(0);
   n.insert(20);
+  n.insert(7);
+  n.insert(6);
+  n.insert(9);
   n.left.left.right = new Node(999);
 
   expect(validate(n)).toEqual(false);
