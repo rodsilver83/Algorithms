@@ -52,12 +52,10 @@ function longestSubsequence(s1, s2) {
 }
 */
 
-
 function memoization(fn) {
     const cache = {};
     return function(...args) {
         if(cache[args]) {
-            console.log(cache);
             return cache[args];
         }
         const result = fn.apply(this,args);
